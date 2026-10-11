@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #07110c;
+  --color-card: #102018;
+  --color-fg: #e7f2ea;
+  --color-mint: #8fe388;
+  --color-pitch: #1f8a4c;
+  --color-gold: #e2b93b;
+  --color-hot: #d4534a;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-sans: "Manrope", "Segoe UI", sans-serif;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+}
+
+.safe-top {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+.safe-bot {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.btn-main,
+.btn-ghost,
+.card,
+.chip,
+.chip-on {
+  border-radius: 1rem;
+}
+
+.btn-main {
+  background: var(--color-mint);
+  color: var(--color-bg);
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.2rem;
+  min-height: 3.25rem;
+}
+.btn-main:disabled {
+  opacity: 0.45;
+}
+.btn-ghost {
+  border: 1px solid color-mix(in srgb, var(--color-fg) 18%, transparent);
+  background: var(--color-card);
+  color: var(--color-fg);
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.2rem;
+  min-height: 3.25rem;
+}
+.card {
+  border: 1px solid color-mix(in srgb, var(--color-fg) 12%, transparent);
+  background: var(--color-card);
+  padding: 0.75rem 0.9rem;
+}
+.card-on {
+  outline: 2px solid var(--color-mint);
+}
+.chip,
+.chip-on {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.8rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+.chip {
+  background: var(--color-card);
+  color: var(--color-fg);
+  border: 1px solid color-mix(in srgb, var(--color-fg) 14%, transparent);
+}
+.chip-on {
+  background: var(--color-mint);
+  color: var(--color-bg);
+}
+
+.goal-card {
+  border: 1px solid color-mix(in srgb, var(--color-mint) 40%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  animation: slide-in 0.4s ease-out;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(2rem); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .goal-card { animation: none; }
+}
