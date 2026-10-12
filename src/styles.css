@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #07110c;
+  --color-card: #102018;
+  --color-fg: #e7f2ea;
+  --color-mint: #8fe388;
+  --color-pitch: #1f8a4c;
+  --color-gold: #e2b93b;
+  --color-hot: #d4534a;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-sans: "Manrope", "Segoe UI", sans-serif;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  input,
+  textarea {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+}
+
+.safe-top {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+.safe-bot {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.btn-main,
+.btn-ghost,
+.card,
+.chip,
+.chip-on {
+  border-radius: 1rem;
+}
+
+.btn-main {
+  background: var(--color-mint);
+  color: var(--color-bg);
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.2rem;
+  min-height: 3.25rem;
+}
+.btn-main:disabled {
+  opacity: 0.45;
+}
+.btn-ghost {
+  border: 1px solid color-mix(in srgb, var(--color-fg) 18%, transparent);
+  background: var(--color-card);
+  color: var(--color-fg);
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.2rem;
+  min-height: 3.25rem;
+}
+.card {
+  border: 1px solid color-mix(in srgb, var(--color-fg) 12%, transparent);
+  background: var(--color-card);
+  padding: 0.75rem 0.9rem;
+}
+.card-on {
+  outline: 2px solid var(--color-mint);
+}
+.chip,
+.chip-on {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.8rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+.chip {
+  background: var(--color-card);
+  color: var(--color-fg);
+  border: 1px solid color-mix(in srgb, var(--color-fg) 14%, transparent);
+}
+.chip-on {
+  background: var(--color-mint);
+  color: var(--color-bg);
+}
+
+.goal-card {
+  border: 1px solid color-mix(in srgb, var(--color-mint) 40%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  animation: slide-in 0.4s ease-out;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(2rem); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .goal-card { animation: none; }
+}
+
+html[data-league="volga"] {
+  --color-bg: #071018;
+  --color-card: #101c2e;
+  --color-fg: #e7f1f8;
+  --color-mint: #7ecbff;
+  --color-pitch: #1a6b96;
+  --color-gold: #d5e4f2;
+}
+
+html[data-league="siberia"] {
+  --color-bg: #141006;
+  --color-card: #261e0e;
+  --color-fg: #fbf3df;
+  --color-mint: #f0c14a;
+  --color-pitch: #a6842a;
+  --color-gold: #ffe08a;
+}
+
+/* Match canvas and HUD stay the usual green pitch. League color stays on the menus. */
+.match-field {
+  --color-bg: #07110c;
+  --color-card: #102018;
+  --color-fg: #e7f2ea;
+  --color-mint: #8fe388;
+  --color-pitch: #1f8a4c;
+  --color-gold: #e2b93b;
+  --color-hot: #d4534a;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.league-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  margin-top: 0.15rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-fg) 18%, transparent);
+  background: var(--color-card);
+  color: var(--color-mint);
+}
